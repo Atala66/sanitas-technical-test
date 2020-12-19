@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { HomeService } from 'src/views/home/home/home.service';
+import { PhotoViewerModel } from '../../../app/models/photo-viewer.model';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -8,12 +8,10 @@ import { HomeService } from 'src/views/home/home/home.service';
   styleUrls: ['./photo-viewer.component.less'],
 })
 export class PhotoViewerComponent implements OnInit {
-  @Input() images: any;
+  @Input() images: any[] = [];
+  @Input() pageSize: any;
 
-
-  // tslint:disable-next-line:variable-name
   constructor() {}
 
-  ngOnInit(): void { }
-
+  ngOnInit(): void {}
 }

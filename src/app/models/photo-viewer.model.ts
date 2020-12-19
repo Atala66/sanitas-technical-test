@@ -1,7 +1,7 @@
 
 
 export interface PhotoViewerModel {
-  id: number;
+  id: any;
   photo: any;
   text: string;
 }

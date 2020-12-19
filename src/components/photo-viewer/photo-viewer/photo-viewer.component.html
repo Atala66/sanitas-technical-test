@@ -1,14 +1,21 @@
 
 
 <main class="photo-viewer-container">
+<form class="form">
+  <div class="form-group">
+    <label for="text">Filter Photo viewer</label>
+    <input type="text" class="form-control" id="images" placeholder="Filter photos...">
+  </div>
+</form>
 
 <div class="centered">
         <section class="cards">
-        <article class="card" *ngFor="let img of images">
-			<img src="{{img.photo}}"/>
+        <article class="card" *ngFor="let img of images"><!-- | dataPipe: images -->
+			<img src="{{ img.photo }}"/>
 			<p class="random-text">{{  img.text }}</p>
          </article>
     </section>
 </div>
 
 </main>
+

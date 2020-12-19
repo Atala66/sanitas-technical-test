@@ -11,9 +11,8 @@ export class HomeService {
   constructor(private http: HttpClient) {}
 
 
-  public getPhotosList(): Observable<any> {
-	  return this.http.get('../../../assets/mocks/images-list.json');
-    // return this.http.get(`${this.baseURL}/id/${id}/500/500`, { responseType: 'text' });
+  public getPhotosList(id: number): Observable<any> {
+     return this.http.get(`${this.baseURL}/id/${id}/200/300`, { responseType: 'text' });
   }
 
 

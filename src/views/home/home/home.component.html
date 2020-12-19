@@ -1,9 +1,9 @@
 
 
-<main class="home-main-container">
+<main class="home-main-container" (scroll)="getBottomScroll($event)">
 
 
-<photo-viewer *ngIf="imagesList" [images]="imagesList"></photo-viewer>
+<photo-viewer *ngIf="imagesList" [images]="imagesList" [pageSize]="20"></photo-viewer>
 
 
 </main>
