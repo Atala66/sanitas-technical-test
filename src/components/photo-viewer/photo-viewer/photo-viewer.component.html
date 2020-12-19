@@ -1,0 +1,14 @@
+
+
+<main class="photo-viewer-container">
+
+<div class="centered">
+        <section class="cards">
+        <article class="card" *ngFor="let img of images">
+			<img src="{{img.photo}}"/>
+			<p class="random-text">{{  img.text }}</p>
+         </article>
+    </section>
+</div>
+
+</main>
