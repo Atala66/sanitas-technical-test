@@ -1,7 +1,6 @@
 
-
-export interface PhotoViewerModel {
+export class PhotoViewerModel {
   id: any;
   photo: any;
-  text: string;
+  text: any;
 }

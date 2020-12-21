@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { PhotoViewerModel } from '../../../app/models/photo-viewer.model';
 
 @Component({
@@ -8,10 +9,21 @@ import { PhotoViewerModel } from '../../../app/models/photo-viewer.model';
   styleUrls: ['./photo-viewer.component.less'],
 })
 export class PhotoViewerComponent implements OnInit {
-  @Input() images: any[] = [];
+  @Input() images: PhotoViewerModel[] = [];
   @Input() pageSize: any;
+
+  public filterForm: FormGroup | any;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.createForm();
+  }
+
+  public createForm(): void {
+    this.filterForm = new FormGroup({
+      search: new FormControl(null),
+    });
+  }
+
 }

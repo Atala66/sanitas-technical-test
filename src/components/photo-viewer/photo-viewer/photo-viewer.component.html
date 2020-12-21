@@ -1,21 +1,21 @@
 
 
 <main class="photo-viewer-container">
-<form class="form">
+<form class="form" [formGroup]="filterForm">
   <div class="form-group">
     <label for="text">Filter Photo viewer</label>
-    <input type="text" class="form-control" id="images" placeholder="Filter photos...">
+    <input type="text" formControlName="search"  class="form-control" id="images" placeholder="Filter photos...">
   </div>
-</form>
-
+  </form>
 <div class="centered">
         <section class="cards">
-        <article class="card" *ngFor="let img of images"><!-- | dataPipe: images -->
+        <article class="card" *ngFor="let img of images | dataPipe:filterForm.value.search">
 			<img src="{{ img.photo }}"/>
 			<p class="random-text">{{  img.text }}</p>
          </article>
     </section>
 </div>
+
 
 </main>
 

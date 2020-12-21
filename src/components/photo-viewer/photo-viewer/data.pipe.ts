@@ -10,8 +10,8 @@ export class DataPipe implements PipeTransform {
     if (!args) {
       return data;
     } else {
-      //   console.log(typeof data);
-       return data.filter(item => item.id === item.id);
+        // tslint:disable-next-line:radix
+        return data.filter((item) => item.id == args || item.text.indexOf(args) >-1);
     }
   }
 }

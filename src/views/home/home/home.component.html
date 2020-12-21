@@ -3,7 +3,7 @@
 <main class="home-main-container" (scroll)="getBottomScroll($event)">
 
 
-<photo-viewer *ngIf="imagesList" [images]="imagesList" [pageSize]="20"></photo-viewer>
+<photo-viewer *ngIf="imagesList && imagesList.length" [images]="imagesList" [pageSize]="20"></photo-viewer>
 
 
 </main>

@@ -4,6 +4,7 @@ import { PhotoViewerComponent } from './photo-viewer.component';
 import { DataPipe } from './data.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [PhotoViewerComponent, DataPipe],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],

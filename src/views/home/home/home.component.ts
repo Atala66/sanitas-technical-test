@@ -1,7 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { PhotoViewerModel } from 'src/app/models/photo-viewer.model';
-import { DomSanitizer } from '@angular/platform-browser';
-import { HomeService } from './home.service';
+
 
 @Component({
   selector: 'app-home',
@@ -15,40 +14,27 @@ export class HomeComponent implements OnInit {
   // tslint:disable-next-line:no-inferrable-types
   public page: number = 0;
   // tslint:disable-next-line:variable-name
-  constructor(private _homeSrv: HomeService, private sanitizer: DomSanitizer) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.getPhotosList(this.page);
   }
 
-  public getPhotosList(page: any): void {
+  public getPhotosList(page: any): any {
     // 4000 elements between 20 elements per page === 200 pages
-    if (page / 20 === 3) {
+    if (page / 20 === 200) {
       return;
     } else {
       for (let i = page; i <= page + 20; i++) {
         const id = i;
-        this._homeSrv.getPhotosList(id).subscribe(
-          (res: any) => {
-            this.imagesList.push({
-              id,
-              photo:
-                'https://i.picsum.photos/id/1/500/500.jpg?hmac=6vo7WkHURh9CWfdf144ASqEaPNcbj2PHJK3UgGH24lM',
-              text: this.generateRandomText(),
-            });
-          },
-          (err: any) => {
-            console.log(err);
-            return err;
-          }
-        );
+        this.imagesList.push({
+          // tslint:disable-next-line:object-literal-shorthand
+          id: id,
+          photo: `https://picsum.photos/id/${id}/500/500.jpg`,
+          text: this.generateRandomText(),
+        });
       }
     }
-  }
-
-  public transformImage(img: any): void {
-    const image = new Image();
-    image.src = img;
   }
 
   public generateRandomText(): any {
@@ -59,6 +45,8 @@ export class HomeComponent implements OnInit {
     return `${title}${randomText}`;
   }
 
+
+
   @HostListener('window:scroll', ['$event'])
   public getBottomScroll(event: any): void {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
@@ -66,7 +54,7 @@ export class HomeComponent implements OnInit {
       if (this.isBottomScrolled) {
         this.page++;
         this.getPhotosList(this.page * 20);
-         console.log('page- number::', this.page);
+        console.log('page- number::', this.page);
       }
     }
   }
